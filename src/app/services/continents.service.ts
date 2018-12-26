@@ -12,14 +12,14 @@ export class ContinentsService {
 
    }
 
-  baseUrl: string = window.location.hostname + "/tripbylocal/api/public/index.php/dashboard/continent";
+   baseUrl: string = "http://localhost/tripbylocal/api/public/index.php/dashboard/" 
 
   /**
    * List all Continents
    */
   index(){
     
-    return this.http.get<Continent[]>(this.baseUrl);
+    return this.http.get<Continent[]>(this.baseUrl + "continent");
   }
 
   /**
@@ -31,7 +31,7 @@ export class ContinentsService {
     this.status = Status[0];
     continent.status = this.status;
 
-    return this.http.post(this.baseUrl + '/store', continent);
+    return this.http.post(this.baseUrl + 'continent/store', continent);
   }
 
   /**
@@ -40,7 +40,7 @@ export class ContinentsService {
    */
   show(id: number){
 
-    return this.http.get<Continent>(this.baseUrl + '/show/' + id);
+    return this.http.get<Continent>(this.baseUrl + 'continent/show/' + id);
   }
 
   /**
@@ -49,6 +49,6 @@ export class ContinentsService {
    */
   update(continent: Continent){
     
-    return this.http.put(this.baseUrl + '/update/' + continent.id, continent);
+    return this.http.put(this.baseUrl + 'continent/update/' + continent.id, continent);
   }
 }
