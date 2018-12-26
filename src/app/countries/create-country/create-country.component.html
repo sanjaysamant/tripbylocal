@@ -1,0 +1,53 @@
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+          <div class="card">
+        <div  class="col-md-10 offset-md-1">
+            <div class="card-header card-header-danger">
+                <h6 class="card-title ">{{formlabel}}</h6>
+            </div>
+            <div class="card-body">
+              <form [formGroup]="createForm">
+                <div class="row">
+                    <div class="col-md-8">
+                      <mat-form-field class="example-full-width">
+                        <mat-select class="" placeholder="Select continent" formControlName="continent_id"   required>
+                          <mat-option *ngFor="let continent of continents "  [value]="continent.id" >{{continent.name}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <mat-error *ngIf="createForm.get('continent_id').hasError('required') && createForm.get('continent_id').touched">Please select a continent required</mat-error>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8">
+                      <mat-form-field class="example-full-width">
+                        <input matInput type="text" formControlName="name"  placeholder="Country Name" required>
+                      </mat-form-field>
+                      <mat-error *ngIf="createForm.get('name').hasError('required') && createForm.get('name').touched">Country Name is required</mat-error>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8">
+                      <mat-form-field class="example-full-width">
+                        <input matInput type="text" formControlName="code"  placeholder="Country Code">
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8">
+                      <mat-form-field class="example-full-width">
+                        <input matInput type="text" formControlName="isd_code"  placeholder="Country ISD Code">
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <button [disabled]='createForm.invalid' *ngIf="addBtn" mat-raised-button class="btn btn-primary" (click)="onSubmit()" >Save</button>
+                  <button [disabled]='createForm.invalid' *ngIf="!addBtn" mat-raised-button class="btn btn-primary"(click)="onUpdate()" >Update</button>
+  
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

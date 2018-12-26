@@ -1,0 +1,65 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title ">Cities</h4>
+                      <button mat-raised-button type="submit" class="btn btn-primary pull-right" (click)="create()">Create</button>
+
+                      <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead class=" text-primary">
+                                  <th>
+                                      #
+                                  </th>
+                                  <th>
+                                      Continent Name
+                                  </th>
+                                  <th>
+                                    Country Name
+                                </th>
+                                <th>
+                                  City Name
+                                </th>
+                                <th>
+                                      Status
+                                  </th>
+                                  <th>
+                                      Action
+                                  </th>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor="let city of cities">
+                                    <td>
+                                      {{city.id}}
+                                    </td>
+                                    <td>
+                                        {{city.country.continent.name}}
+                                    </td>
+                                    <td>
+                                      {{city.country.name}}
+                                    </td>
+                                    <td>
+                                      {{city.name}}
+                                    </td>
+                                    <td>
+                                      {{city.status}}
+                                    </td>
+                                    <td>
+                                        <i class="material-icons" matTooltip="Edit" [matTooltipPosition]="'above'" style="margin-right: 20px;" (click)="edit(city)">edit</i>
+                                        <i class="material-icons" matTooltip="Delete!!" [matTooltipPosition]="'above'">delete</i>
+                                    </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div  class="col-md-10 offset-md-1">
+        <div class="card">
+          <div class="card-header card-header-danger">
+              <h6 class="card-title ">{{formlabel}}</h6>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="createForm">
+
+              <div class="col-sm-6">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" formControlName="name"  placeholder="Continent Name" required>
+                </mat-form-field>
+                <mat-error *ngIf="createForm.get('name').hasError('required') && createForm.get('name').touched">Continent Name is required</mat-error>
+              </div>
+              
+              <button [disabled]='createForm.invalid' *ngIf="addBtn" mat-raised-button class="btn btn-primary" (click)="onSubmit()" >Save</button>
+              <button [disabled]='createForm.invalid' *ngIf="!addBtn" mat-raised-button class="btn btn-primary"(click)="onUpdate()" >Update</button>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
