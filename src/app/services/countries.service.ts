@@ -13,7 +13,7 @@ export class CountriesService {
 
    }
 
-  baseUrl: string = "http://localhost/tripbylocal/api/public/index.php/dashboard/" 
+  baseUrl: string = "http://tripbylocal.group4s.in/public/index.php/dashboard/"; 
   
   /**
    * List all Countries
@@ -32,7 +32,7 @@ export class CountriesService {
     this.status = Status[0];
     country.status = this.status;
 
-    return this.http.post(this.baseUrl + 'country/store', country);
+    return this.http.post(this.baseUrl + '/country/store', country);
   }
 
   /**
@@ -41,7 +41,7 @@ export class CountriesService {
    */
   show(id: number){
 
-    return this.http.get<Country>(this.baseUrl + 'country/show/' + id);
+    return this.http.get<Country>(this.baseUrl + '/country/show/' + id);
   }
 
   /**
@@ -50,7 +50,7 @@ export class CountriesService {
    */
   update(country: Country){
     
-    return this.http.put(this.baseUrl + 'country/update/' + country.id, country);
+    return this.http.put(this.baseUrl + '/country/update/' + country.id, country);
   }
 
   /**
@@ -58,6 +58,6 @@ export class CountriesService {
    */
   getAllContinents(){
 
-    return this.http.get<Continent[]>(this.baseUrl + "continents");
+    return this.http.get<Continent[]>(this.baseUrl + "/continents");
   }
 }
