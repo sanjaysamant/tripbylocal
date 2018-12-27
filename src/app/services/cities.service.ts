@@ -15,7 +15,7 @@ export class CitiesService {
 
    }
   //  baseUrl: string = "http://localhost/api/public/index.php/dashboard";
-   baseUrl: string = "https://tripbylocal.group4s.in/public/index.php/dashboard/"; 
+   baseUrl: string = "https://tripbylocal.group4s.in/public/index.php/dashboard"; 
   /**
    * List all Countries
    */
