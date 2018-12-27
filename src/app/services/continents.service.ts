@@ -11,8 +11,8 @@ export class ContinentsService {
   constructor(private http: HttpClient) {
 
    }
-  //  baseUrl: string = "http://localhost/api/public/index.php/dashboard";
-   baseUrl: string = "http://tripbylocal.group4s.in/public/index.php/dashboard";
+   baseUrl: string = "https://localhost/api/public/index.php/dashboard";
+  //  baseUrl: string = "http://tripbylocal.group4s.in/public/index.php/dashboard";
 
   /**
    * List all Continents
