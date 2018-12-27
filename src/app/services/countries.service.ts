@@ -13,14 +13,15 @@ export class CountriesService {
 
    }
 
-  baseUrl: string = "http://tripbylocal.group4s.in/public/index.php/dashboard/"; 
+   baseUrl: string = "http://localhost/api/public/index.php/dashboard";
+  // baseUrl: string = "http://tripbylocal.group4s.in/public/index.php/dashboard/"; 
   
   /**
    * List all Countries
    */
   index(){
     
-    return this.http.get<Country[]>(this.baseUrl + "country");
+    return this.http.get<Country[]>(this.baseUrl + "/country");
   }
 
   /**

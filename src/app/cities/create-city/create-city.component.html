@@ -11,8 +11,8 @@
               <div class="row">
                 <div class="col-md-8">
                   <mat-form-field class="example-full-width">
-                    <mat-select class="" placeholder="Select continent" formControlName="continent_id"   required>
-                      <mat-option *ngFor="let continent of continents "  [value]="continent.id" >{{continent.name}}</mat-option>
+                    <mat-select class="" placeholder="Select continent" formControlName="continent_id" (selectionChange)="onSelect($event.value)"  required>
+                      <mat-option *ngFor="let continent of continents " [value]="continent.id" >{{continent.name}}</mat-option>
                     </mat-select>
                   </mat-form-field>
                   <mat-error *ngIf="createForm.get('continent_id').hasError('required') && createForm.get('continent_id').touched">Please select a continent required</mat-error>
@@ -22,33 +22,19 @@
               <div class="row">
                 <div class="col-md-8">
                   <mat-form-field class="example-full-width">
-                    <mat-select class="" placeholder="Select continent" formControlName="country_id"   required>
-                      <mat-option *ngFor="let continent of continents "  [value]="continent.id" >{{continent.name}}</mat-option>
+                    <mat-select class="" placeholder="Select country" formControlName="country_id"   required>
+                      <mat-option *ngFor="let country of countries "  [value]="country.id" >{{country.name}}</mat-option>
                     </mat-select>
                   </mat-form-field>
-                  <mat-error *ngIf="createForm.get('country_id').hasError('required') && createForm.get('country_id').touched">Please select a continent required</mat-error>
+                  <mat-error *ngIf="createForm.get('country_id').hasError('required') && createForm.get('country_id').touched">Please select a country required</mat-error>
                 </div>
               </div>
                 <div class="row">
                   <div class="col-sm-8">
                     <mat-form-field class="example-full-width">
-                      <input matInput type="text" formControlName="name"  placeholder="Country Name" required>
+                      <input matInput type="text" formControlName="name"  placeholder="City Name" required>
                     </mat-form-field>
-                    <mat-error *ngIf="createForm.get('name').hasError('required') && createForm.get('name').touched">Country Name is required</mat-error>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-8">
-                    <mat-form-field class="example-full-width">
-                      <input matInput type="text" formControlName="code"  placeholder="Country Code">
-                    </mat-form-field>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-8">
-                    <mat-form-field class="example-full-width">
-                      <input matInput type="text" formControlName="isd_code"  placeholder="Country ISD Code">
-                    </mat-form-field>
+                    <mat-error *ngIf="createForm.get('name').hasError('required') && createForm.get('name').touched">City Name is required</mat-error>
                   </div>
                 </div>
                 <button [disabled]='createForm.invalid' *ngIf="addBtn" mat-raised-button class="btn btn-primary" (click)="onSubmit()" >Save</button>

@@ -15,9 +15,9 @@ export class CitiesComponent implements OnInit {
   constructor(private router: Router, private cityService: CitiesService) { }
 
   ngOnInit() {
-    console.log("ip = " + window.location.hostname);
+    // console.log("ip = " + window.location.hostname);
     //get the all city data
-    this.cityService.index().subscribe(data => this.cities = data);
+    this.cityService.index().subscribe(data => {this.cities = data; console.log(this.cities)});
   }
 
   /**

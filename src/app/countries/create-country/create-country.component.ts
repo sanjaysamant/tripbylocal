@@ -28,6 +28,8 @@ export class CreateCountryComponent implements OnInit {
       name: ['', [Validators.required, , Validators.maxLength(25)]],
       code: [],
       isd_code: [],
+      flag: [],
+      flag_path: [],
     });
     this.countriesService.getAllContinents().subscribe(data => this.continents = data);
     //If form is edit form
@@ -36,7 +38,7 @@ export class CreateCountryComponent implements OnInit {
       this.countriesService.show(+id).subscribe(data => {  
         console.log(data)
         this.createForm.patchValue(data);
-        this.selectedItem = data.continent_id;
+        // this.selectedItem = data.continent_id;
       })  
       this.addBtn = false;  
       this.formlabel = 'Edit Country';  

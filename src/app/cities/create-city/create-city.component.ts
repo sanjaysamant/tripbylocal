@@ -11,13 +11,15 @@ import { CitiesService } from './../../services/cities.service';
 })
 export class CreateCityComponent implements OnInit {
   formlabel: string = 'Create City';  
-  selectedItem: any;
+  selectedContinent: any;
+  selectedCountry: any;
 
   constructor(private formBuilder: FormBuilder, private router: Router, private citiesService: CitiesService) { }
 
   createForm: FormGroup;  
   addBtn: boolean = true;  
   continents = [];
+  countries = [];
 
   ngOnInit() {
 
@@ -30,17 +32,29 @@ export class CreateCityComponent implements OnInit {
     this.citiesService.getAllContinents().subscribe(data => this.continents = data);
     //If form is edit form
     let id = localStorage.getItem('id');  
-    if (+id > 0) {  
+    if (+id > 0) { 
+       
       this.citiesService.show(+id).subscribe(data => {  
-        console.log(data)
+        
+        this.citiesService.getCountries(data.continent_id).subscribe(data =>{ this.countries = data; });
+
         this.createForm.patchValue(data);
-        this.selectedItem = data.continent_id;
+        // this.selectedContinent = data.continent_id;
+        // this.selectedCountry = data.country_id;
       })  
       this.addBtn = false;  
       this.formlabel = 'Edit City';  
     }    
   }
-  
+  /**
+   * on select change countries
+   * @param continent_id 
+   */
+  onSelect(continent_id) {
+    // console.log(continent_id);
+    this.citiesService.getCountries(continent_id).subscribe(data =>{ this.countries = data;});
+  }
+
   /**
    * On form submit call a store service
    */
